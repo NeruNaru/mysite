@@ -11,7 +11,7 @@
     </head>
 
     <body>
-       <div class="wrap">
+        <div class="wrap">
             <header class="clearfix">
                 <h1><a href="/main/index">MySite</a></h1>
               
@@ -29,10 +29,10 @@
                  	
                <ul class="clearfix">
                     <li>
-                        <a class="btn btn-white btn-sm" href="/user/loginform">로그인</a>
+                        <a class="btn btn-white btn-sm" href="">로그인</a>
                     </li>
                     <li>
-                        <a class="btn btn-white btn-sm" href="/user/joinform">회원가입</a>
+                        <a class="btn btn-white btn-sm" href="">회원가입</a>
                     </li>
                 </ul>
             </header>
@@ -50,7 +50,7 @@
                 <aside>
                     <h2>유저</h2>
                     <ul>
-                        <li><a href="/user/editform">회원정보</a></li>
+                        <li><a href="/user/editorform">회원정보</a></li>
                         <li><a href="/user/loginform">로그인</a></li>
                         <li><a href="/user/joinform">회원가입</a></li>
                     </ul>
@@ -59,7 +59,7 @@
 
                 <main>
                     <div class="main-head clearfix">
-                        <h3>회원가입</h3>
+                        <h3>회원정보</h3>
                         <ol class="clearfix">
                             <li>홈</li>
                             <li>유저</li>
@@ -67,38 +67,17 @@
                         </ol>
                     </div>
 
-                    <div id="user-joinform">
+                    <div id="user-joinok">
                         
-                        <form class="form-box" action="" method="">
-                            <div class="info-row">
-                                <label class="info-title" for="txt-idcheck">아이디</label>
-                                <input id="txt-idcheck" type="text" name="" value="">
-                                <button id="" class="btn btn-gray btn-input"  type="button">중복체크</button>
-                            </div>
-                            <div class="info-row">
-                                <label class="info-title" for="txt-pwd">패스워드</label>
-                                <input id="txt-pwd" type="password" name="" value="">
-                            </div>
-                            <div class="info-row">
-                                <label class="info-title" for="txt-name">이름</label>
-                                <input id="txt-name" type="text" name="" value="">
-                            </div>
-                            <div class="info-row">
-                                <span class="info-title">성별</span>
-                                <label>남</label>
-                                <input type="radio">
-                                <label>여</label>
-                                <input type="radio">
-                            </div>
-                            <div class="info-row">
-                                <span class="info-title">약관동의</span>
-                                <input type="checkbox" name="" value="">
-                                <lable>서비스 약관에 동의합니다.</lable>
-                            </div>
-                            <div class="btn-group">
-                                <button class="btn btn-blue btn-lg" type="submit">회원가입</button>
-                            </div>
-                        </form>
+                        <div class="complete-box">
+                            <p>
+                                회원가입을 축하합니다.<br>
+                                이제 로그인하여 다양한 서비스를 이용해보세요.
+                                <br><br>
+                                <a class="btn btn-gray btn-sm" href="/user/loginform">로그인</a>
+                                <a class="btn btn-gray btn-sm" href="/main/index">홈으로</a>
+                            </p>
+                        </div>
                         
                     </div>
 

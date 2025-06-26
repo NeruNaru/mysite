@@ -13,7 +13,7 @@
     <body>
         <div class="wrap">
             <header class="clearfix">
-                <h1><a href="">MySite</a></h1>
+                <h1><a href="/main/index">MySite</a></h1>
               
                 <!--
 			    <ul class="clearfix">
@@ -29,10 +29,10 @@
                  	
                <ul class="clearfix">
                     <li>
-                        <a class="btn btn-white btn-sm" href="">로그인</a>
+                        <a class="btn btn-white btn-sm" href="/user/loginform">로그인</a>
                     </li>
                     <li>
-                        <a class="btn btn-white btn-sm" href="">회원가입</a>
+                        <a class="btn btn-white btn-sm" href="/user/joinform">회원가입</a>
                     </li>
                 </ul>
             </header>

@@ -32,7 +32,7 @@
                         <a class="btn btn-white btn-sm" href="/user/loginform">로그인</a>
                     </li>
                     <li>
-                        <a class="btn btn-white btn-sm" href="/user/joinform">회원가입</a>
+                        <a class="btn btn-white btn-sm" href="/user.joinform">회원가입</a>
                     </li>
                 </ul>
             </header>
@@ -59,21 +59,20 @@
 
                 <main>
                     <div class="main-head clearfix">
-                        <h3>회원가입</h3>
+                        <h3>회원정보</h3>
                         <ol class="clearfix">
                             <li>홈</li>
                             <li>유저</li>
-                            <li>회원가입</li>
+                            <li>회원정보</li>
                         </ol>
                     </div>
 
-                    <div id="user-joinform">
+                    <div id="user-editform">
                         
                         <form class="form-box" action="" method="">
                             <div class="info-row">
-                                <label class="info-title" for="txt-idcheck">아이디</label>
-                                <input id="txt-idcheck" type="text" name="" value="">
-                                <button id="" class="btn btn-gray btn-input"  type="button">중복체크</button>
+                                <span class="info-title">아이디</span>
+                                <span id="txt-id">aaaa</span>
                             </div>
                             <div class="info-row">
                                 <label class="info-title" for="txt-pwd">패스워드</label>
@@ -90,13 +89,8 @@
                                 <label>여</label>
                                 <input type="radio">
                             </div>
-                            <div class="info-row">
-                                <span class="info-title">약관동의</span>
-                                <input type="checkbox" name="" value="">
-                                <lable>서비스 약관에 동의합니다.</lable>
-                            </div>
                             <div class="btn-group">
-                                <button class="btn btn-blue btn-lg" type="submit">회원가입</button>
+                                <button id="btn-edit" class="btn btn-blue btn-lg" type="submit">회원정보수정</button>
                             </div>
                         </form>
                         
