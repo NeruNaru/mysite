@@ -1,6 +1,6 @@
 package com.javaex.service;
 
-public class MySiteService {
+public class MainService {
 	//field
 	
 	//editor

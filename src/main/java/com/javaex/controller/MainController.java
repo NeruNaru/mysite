@@ -17,7 +17,7 @@ public class MainController {
 	//method normal
 	
 	//-사이트 시작 페이지
-	@RequestMapping(value="/main/index", method= {RequestMethod.GET, RequestMethod.POST})
+	@RequestMapping(value="/", method= {RequestMethod.GET, RequestMethod.POST})
 	public String index() {
 		System.out.println("MaintController.index()");
 		

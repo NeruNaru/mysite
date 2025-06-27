@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="ko">
     <head>
@@ -12,31 +13,9 @@
 
     <body>
        <div class="wrap">
-            <header class="clearfix">
-                <h1><a href="/main/index">MySite</a></h1>
-              
-                <!--
-			    <ul class="clearfix">
-				    <li><span class="user-welcome">황일영 님 안녕하세요^^</span></li>
-				    <li>
-                        <a class="btn btn-white btn-sm" href="">로그아웃</a>
-                    </li>
-                    <li>
-                        <a class="btn btn-white btn-sm" href="">정보수정</a>
-                    </li>
-			    </ul>
-                -->
-                 	
-               <ul class="clearfix">
-                    <li>
-                        <a class="btn btn-white btn-sm" href="/user/loginform">로그인</a>
-                    </li>
-                    <li>
-                        <a class="btn btn-white btn-sm" href="/user/joinform">회원가입</a>
-                    </li>
-                </ul>
-            </header>
-                 
+			<!-- header(헤더) ------------------------------------------------>
+			<c:import url="/WEB-INF/views/include/header.jsp"></c:import>
+			<!-- header(헤더) ------------------------------------------------>  
             <nav>
                 <ul class="clearfix">
                     <li><a href="">입사지원서</a></li>
@@ -69,26 +48,26 @@
 
                     <div id="user-joinform">
                         
-                        <form class="form-box" action="" method="">
+                        <form class="form-box" action="http://localhost:8888/user/join" method="post">
                             <div class="info-row">
                                 <label class="info-title" for="txt-idcheck">아이디</label>
-                                <input id="txt-idcheck" type="text" name="" value="">
+                                <input id="txt-idcheck" type="text" name="id" value="">
                                 <button id="" class="btn btn-gray btn-input"  type="button">중복체크</button>
                             </div>
                             <div class="info-row">
                                 <label class="info-title" for="txt-pwd">패스워드</label>
-                                <input id="txt-pwd" type="password" name="" value="">
+                                <input id="txt-pwd" type="password" name="password" value="">
                             </div>
                             <div class="info-row">
                                 <label class="info-title" for="txt-name">이름</label>
-                                <input id="txt-name" type="text" name="" value="">
+                                <input id="txt-name" type="text" name="name" value="">
                             </div>
                             <div class="info-row">
                                 <span class="info-title">성별</span>
                                 <label>남</label>
-                                <input type="radio">
+                                <input type="radio" name="gender" value="male">
                                 <label>여</label>
-                                <input type="radio">
+                                <input type="radio" name="gender" value="female">
                             </div>
                             <div class="info-row">
                                 <span class="info-title">약관동의</span>
@@ -106,11 +85,9 @@
                 </main>
             </div>
             
-            <footer>
-                <p>
-                    Copyright ⓒ 2025 황일영. All right reserved  
-                </p>
-            </footer>
+            <!-- footer(푸터) ------------------------------------------------>
+			<c:import url="/WEB-INF/views/include/footer.jsp"></c:import>
+			<!-- footer(푸터) ------------------------------------------------>
 
         </div>
      

@@ -1,6 +1,6 @@
 package com.javaex.vo;
 
-public class MysiteVO {
+public class UserVO {
 	//field
 	private int no;
 	private String id;
@@ -8,11 +8,11 @@ public class MysiteVO {
 	private String name;
 	private String gender;
 	//editor
-	public MysiteVO() {
+	public UserVO() {
 		super();
 	}
 	
-	public MysiteVO(int no, String id, String password, String name, String gender) {
+	public UserVO(int no, String id, String password, String name, String gender) {
 		super();
 		this.no = no;
 		this.id = id;
