@@ -12,12 +12,12 @@
                          
 		<c:if test="${sessionScope.authuser != null}">
 			<ul class="clearfix">
-				<li><span class="user-welcome"> ${sessionScope.athuser.name} 님 안녕하세요^^</span></li>
+				<li><span class="user-welcome"> ${sessionScope.authuser.name}님 안녕하세요^^</span></li>
 				<li>
 					<a class="btn btn-white btn-sm" href="/user/logout">로그아웃</a>
 				</li>
 				<li>
-					<a class="btn btn-white btn-sm" href="">정보수정</a>
+					<a class="btn btn-white btn-sm" href="/user/editform">정보수정</a>
 				</li>
 			</ul>
 		</c:if>

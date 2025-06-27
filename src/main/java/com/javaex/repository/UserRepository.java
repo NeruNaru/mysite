@@ -40,4 +40,17 @@ public class UserRepository {
 		
 		return authuser;
 	}
+	
+	//user edit (유저 정보수정)
+	public int userEditAccount(UserVO uservo) {
+		System.out.println("UserRepository.userEdit()");
+		sqlsession.update("user.editAccount", uservo);
+		
+		UserVO authuserId = sqlsession.selectOne("user.selectOneIdPw", uservo);
+		uservo.setNo(authuserId.getNo());
+		
+		System.out.println(uservo.getNo());
+		
+		return 0;
+	}
 }

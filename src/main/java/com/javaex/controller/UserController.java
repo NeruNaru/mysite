@@ -87,6 +87,16 @@ public class UserController {
 		return "user/editform";
 	} //edit form
 	
+	//edit (회원정보 수정)
+	@RequestMapping(value = "/user/edit", method= {RequestMethod.GET, RequestMethod.POST})
+	public String edit(@ModelAttribute UserVO uservo, HttpSession session) {
+		System.out.println("UserController.edit()");
+		
+		userservice.exeEdit(uservo);
+		
+		return "redirect:/";
+	}
+	
 	//-logout (로그아웃)
 	@RequestMapping(value = "/user/logout", method= {RequestMethod.GET, RequestMethod.POST})
 	public String logout(HttpSession session) {

@@ -34,4 +34,14 @@ public class UserService {
 		
 		return authuser;
 	}
+	
+	//-user edit
+	public int exeEdit(UserVO uservo) {
+		System.out.println("UserService.exeEdit()");
+		
+		userrepository.userEditAccount(uservo);
+		
+		
+		return 0;
+	}
 }

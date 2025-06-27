@@ -15,12 +15,19 @@
 			select	no,
 					id,
 					password,
-					name,
-					gender
+					name
 			from userdata
 			where id = #{id}
 			and password = #{password}
 		]]>
-	
 	</select>
+	<update id="editAccount" parameterType="com.javaex.vo.UserVO">
+		<![CDATA[
+			update userdata
+			set	password = #{password},
+				name = #{name},
+				gender = #{gender}
+			where no = #{no}
+		]]>
+	</update>
 </mapper>

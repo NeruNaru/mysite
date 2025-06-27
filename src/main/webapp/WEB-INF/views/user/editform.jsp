@@ -27,14 +27,9 @@
             </nav>
 
             <div class="content2 clearfix">
-                <aside>
-                    <h2>유저</h2>
-                    <ul>
-                        <li><a href="/user/editform">회원정보</a></li>
-                        <li><a href="/user/loginform">로그인</a></li>
-                        <li><a href="/user/joinform">회원가입</a></li>
-                    </ul>
-                </aside>
+                <!-- left_user_box(좌측유저박스) ------------------------------------------------>
+				<c:import url="/WEB-INF/views/include/left_user_box.jsp"></c:import>
+				<!-- left_user_box(좌측유저박스) ------------------------------------------------>
 
 
                 <main>
@@ -49,25 +44,25 @@
 
                     <div id="user-editform">
                         
-                        <form class="form-box" action="" method="">
+                        <form class="form-box" action="http://localhost:8888/user/edit" method="get">
                             <div class="info-row">
                                 <span class="info-title">아이디</span>
-                                <span id="txt-id">aaaa</span>
+                                <span id="txt-id">${sessionScope.authuser.id}</span>
                             </div>
                             <div class="info-row">
                                 <label class="info-title" for="txt-pwd">패스워드</label>
-                                <input id="txt-pwd" type="password" name="" value="">
+                                <input id="txt-pwd" type="password" name="password" value="${sessionScope.authuser.password}">
                             </div>
                             <div class="info-row">
                                 <label class="info-title" for="txt-name">이름</label>
-                                <input id="txt-name" type="text" name="" value="">
+                                <input id="txt-name" type="text" name="name" value="${sessionScope.authuser.name}">
                             </div>
                             <div class="info-row">
                                 <span class="info-title">성별</span>
                                 <label>남</label>
-                                <input type="radio">
+                                <input type="radio" name="gender" value="male">
                                 <label>여</label>
-                                <input type="radio">
+                                <input type="radio" name="gender" value="female">
                             </div>
                             <div class="btn-group">
                                 <button id="btn-edit" class="btn btn-blue btn-lg" type="submit">회원정보수정</button>

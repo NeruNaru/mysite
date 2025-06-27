@@ -24,18 +24,15 @@
                     <li><a href="">갤러리</a></li>
                     <li><a href="">방명록</a></li>
                 </ul>
+                
+                
             </nav>
 
             <div class="content2 clearfix">
-                <aside>
-                    <h2>유저</h2>
-                    <ul>
-                        <li><a href="/user/editform">회원정보</a></li>
-                        <li><a href="/user/loginform">로그인</a></li>
-                        <li><a href="/user/joinform">회원가입</a></li>
-                    </ul>
-                </aside>
-
+                
+			<!-- left_user_box(좌측유저박스) ------------------------------------------------>
+			<c:import url="/WEB-INF/views/include/left_user_box.jsp"></c:import>
+			<!-- left_user_box(좌측유저박스) ------------------------------------------------>
 
                 <main>
                     <div class="main-head clearfix">
