@@ -17,4 +17,29 @@
 			where u.no = b.user_no
 		]]>
 	</select>
+	
+	<!-- selectOne -->
+	<select id="selectOne" resultType="com.javaex.vo.BoardVO">
+		<![CDATA[
+			select	b.no,
+			        b.title,
+			        b.content,
+			        b.hit,
+			        date_format(b.reg_date, '%Y-%m-%d') regDate,
+			        u.no userNo,
+			        u.name userName
+			from board b, userdata u
+			where u.no = b.user_no
+			and b.no = #{no}
+		]]>
+	</select>
+	
+	<!-- updateHit - 조회수 증가 -->
+	<update id="updateHit">
+		<![CDATA[
+			update board
+			set hit = hit + 1
+			where no = #{no}
+		]]>
+	</update>
 </mapper>

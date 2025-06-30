@@ -28,6 +28,11 @@ create table board(
 insert into board
 values(null, '1', '방문했습니다', '첫 번째 방문입니다', 3, '2025-06-30')
 ;
+
+insert into board
+values(null, '2', '방문했습니다', '두 번째 방문입니다', 6, '2025-06-30')
+;
+
 -- 전체 조회
 select	b.no,
         b.title,
@@ -38,4 +43,17 @@ select	b.no,
         u.name userName
 from board b, userdata u
 where u.no = b.user_no
+;
+
+-- 특정 게시물 조회
+select	b.no,
+        b.title,
+        b.content,
+        b.hit,
+        date_format(b.reg_date, '%Y-%m-%d') regDate,
+        u.no userNo,
+        u.name userName
+from board b, userdata u
+where u.no = b.user_no
+and b.no = 2
 ;

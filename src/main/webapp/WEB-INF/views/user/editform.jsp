@@ -17,14 +17,9 @@
 			<c:import url="/WEB-INF/views/include/header.jsp"></c:import>
 			<!-- header(헤더) ------------------------------------------------>
                  
-            <nav>
-                <ul class="clearfix">
-                    <li><a href="">입사지원서</a></li>
-                    <li><a href="">게시판</a></li>
-                    <li><a href="">갤러리</a></li>
-                    <li><a href="">방명록</a></li>
-                </ul>
-            </nav>
+            <!-- nav ------------------------------------------------>
+			<c:import url="/WEB-INF/views/include/nav.jsp"></c:import>
+			<!-- nav ------------------------------------------------>
 
             <div class="content2 clearfix">
                 <!-- left_user_box(좌측유저박스) ------------------------------------------------>

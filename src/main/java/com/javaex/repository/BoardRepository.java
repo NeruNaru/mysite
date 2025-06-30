@@ -18,6 +18,8 @@ public class BoardRepository {
 	//method g/s
 		
 	//method normal
+	
+	//# 전체 리스트 조회 repository
 	public List<BoardVO> boardSelectList(){
 		System.out.println("BoardRepository.boardSelectAll()");
 		
@@ -25,5 +27,25 @@ public class BoardRepository {
 		System.out.println(boardList);
 		
 		return boardList;
+	}
+	
+	//# 한가지 리스트 조회 repository
+	public BoardVO boardSelectOne(int no) {
+		System.out.println("BoardRepository.boardSelectOne()");
+		System.out.println(no);
+		
+		BoardVO readervo = sqlsession.selectOne("board.selectOne", no);
+		
+		return readervo;
+	}
+	
+	//# 조회수 증가 repository
+	public int updateHit(int no) {
+		System.out.println("BoardRepository.updateHit()");
+		System.out.println(no);
+		
+		int count = sqlsession.update("board.updateHit", no);
+		
+		return count;
 	}
 }

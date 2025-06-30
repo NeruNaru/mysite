@@ -16,20 +16,16 @@
             <!-- header(헤더) ------------------------------------------------>
 			<c:import url="/WEB-INF/views/include/header.jsp"></c:import>
 			<!-- header(헤더) ------------------------------------------------>
-            <nav>
-                <ul class="clearfix">
-                    <li><a href="">입사지원서</a></li>
-                    <li><a href="">게시판</a></li>
-                    <li><a href="">갤러리</a></li>
-                    <li><a href="">방명록</a></li>
-                </ul>
-            </nav>
+			
+            <!-- nav ------------------------------------------------>
+			<c:import url="/WEB-INF/views/include/nav.jsp"></c:import>
+			<!-- nav ------------------------------------------------>
 
             <div class="content2 clearfix">
                 <aside>
                     <h2>게시판</h2>
                     <ul>
-                        <li><a href="">일반게시판</a></li>
+                        <li><a href="board/list">일반게시판</a></li>
                         <li><a href="">댓글게시판</a></li>
                     </ul>
                 </aside>
@@ -72,13 +68,17 @@
 							<c:forEach items="${requestScope.bList}" var="boardvo">
 							<tbody>
 								<tr>
-									<td>${requestScope.board.no}</td>
-									<td class="txt-left"><a href="#">${requestScope.board.title}</a></td>
-									<td>${requestScope.board.name}</td>
-									<td>${requestScope.board.hit}</td>
-									<td>${requestScope.board.regDate}</td>
+									<td>${boardvo.no}</td>
+									<td class="txt-left"><a href="/board/read?no=${boardvo.no}">${boardvo.title}</a></td>
+									<td>${boardvo.userName}</td>
+									<td>${boardvo.hit}</td>
+									<td>${boardvo.regDate}</td>
 									<td>
-                                        <button class="btn btn-white btn-sm" type="button">삭제</button>
+										<c:if test="${sessionScope.authuser != null}">
+    										<c:if test="${sessionScope.authuser.no == boardvo.userNo}">
+       											<button class="btn btn-white btn-sm" type="button">삭제</button>
+    										</c:if>
+										</c:if>
                                     </td>
 								</tr>
 							</tbody>
@@ -110,12 +110,10 @@
                 </main>
             </div>
             
-            <footer>
-                <p>
-                    Copyright ⓒ 2025 황일영. All right reserved  
-                </p>
-            </footer>
-
+            <!-- footer(푸터) ------------------------------------------------>
+			<c:import url="/WEB-INF/views/include/footer.jsp"></c:import>
+			<!-- footer(푸터) ------------------------------------------------>
+			
         </div>
      
     </body>
