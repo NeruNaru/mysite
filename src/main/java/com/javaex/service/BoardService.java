@@ -40,4 +40,20 @@ public class BoardService {
 		
 		return readervo;
 	}
+	
+	//# 한가지 조회2 service
+	public BoardVO exeBoardSelectOne2(int no) {
+		System.out.println("BoardService.exeBoardSelectOne()");
+		System.out.println(no);
+		
+		BoardVO editorvo = boardrepository.boardSelectOne2(no);
+		
+		return editorvo;
+	}
+	
+	public int exeBoardUpdate() {
+		System.out.println("BoardService.exeBoardUpdate()");
+		
+		return 0;
+	}
 }

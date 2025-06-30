@@ -39,6 +39,16 @@ public class BoardRepository {
 		return readervo;
 	}
 	
+	//# 한가지 리스트 조회2 repository
+	public BoardVO boardSelectOne2(int no) {
+		System.out.println("BoardRepository.boardSelectOne()");
+		System.out.println(no);
+		
+		BoardVO editorvo = sqlsession.selectOne("board.selectOne", no);
+		
+		return editorvo;
+	}
+	
 	//# 조회수 증가 repository
 	public int updateHit(int no) {
 		System.out.println("BoardRepository.updateHit()");
@@ -47,5 +57,11 @@ public class BoardRepository {
 		int count = sqlsession.update("board.updateHit", no);
 		
 		return count;
+	}
+	
+	public int boardUpdate() {
+		System.out.println("BoardRepository.boardUpdate()");
+		
+		return 0;
 	}
 }

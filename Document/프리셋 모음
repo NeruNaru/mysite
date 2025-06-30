@@ -14,3 +14,8 @@
 <!-- footer(푸터) ------------------------------------------------>
 			<c:import url="/WEB-INF/views/include/footer.jsp"></c:import>
 			<!-- footer(푸터) ------------------------------------------------>
+
+
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
+${pageContext.request.contextPath}

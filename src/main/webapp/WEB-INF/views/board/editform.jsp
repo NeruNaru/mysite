@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
 <!DOCTYPE html>
 <html lang="ko">
     <head>
@@ -13,7 +14,7 @@
 
     <body>
       <div class="wrap">
-            <!-- header(헤더) ------------------------------------------------>
+           <!-- header(헤더) ------------------------------------------------>
 			<c:import url="/WEB-INF/views/include/header.jsp"></c:import>
 			<!-- header(헤더) ------------------------------------------------>
 
@@ -32,7 +33,8 @@
 
 
 				<main>
-					<div class="main-head clearfix">
+
+				    <div class="main-head clearfix">
                         <h3>일반게시판</h3>
                         <ol class="clearfix">
                             <li>홈</li>
@@ -40,53 +42,52 @@
                             <li>일반게시판</li>
                         </ol>
                     </div>
-
 	
-					<div id="board-read">
-
-						<!-- 작성자 -->
-						<div class="info-row">
-							<span class="info-title">작성자</span>
-							<span>${readervo.userName}</span>
-						</div>
+					<div id="board-editform">
 						
-						<!-- 조회수 -->
-						<div class="info-row">
-							<span class="info-title">조회수</span>
-							<span>${readervo.hit}</span>
-						</div>
-						
-						<!-- 작성일 -->
-						<div class="info-row">
-							<span class="info-title">작성일</span>
-							<span>${readervo.regDate}</span>
-						</div>
-						
-						<!-- 제목 -->
-						<div class="info-row">
-							<span class="info-title">제 목</span>
-							<span>${readervo.title}</span>
-						</div>
-					
-						<!-- 내용 -->
-						<div class="info-row">
-							<div class="outline" >
-								${readervo.content}
+						<form class="form-box" action="${pageContext.request.contextPath}/edit" method="get">
+							<!-- 작성자 -->
+							<div class="info-row">
+								<span class="info-title">작성자</span>
+								<span>${editorvo.userName}</span>
 							</div>
-						</div>
+							
+							<!-- 조회수 -->
+							<div class="info-row">
+								<span class="info-title">조회수</span>
+								<span>${editorvo.hit}</span>
+							</div>
+							
+							<!-- 작성일 -->
+							<div class="info-row">
+								<span class="info-title">작성일</span>
+								<span>${editorvo.regDate}</span>
+							</div>
+							
+							<!-- 제목 -->
+							<div class="info-row">
+								<label class="info-title" for="txt-title">제&nbsp;&nbsp;&nbsp;목</label>
+								<input type="text" id="txt-title" name="title" value="${editorvo.title}">
+							</div>
 						
-						<div class="btn-box">
-							<a class="btn btn-gray btn-md" href="/board/list">목록</a>
-							<c:if test="${sessionScope.authuser != null}">
-    							<c:if test="${sessionScope.authuser.no == readervo.userNo}">
-									<a class="btn btn-blue btn-md" href="/board/editform?no=${readervo.no}">수정</a>
-								</c:if>
-							</c:if>
-						</div>
-						
-					</div>
+							<!-- 내용 -->
+							<div class="info-row">
+								<textarea id="txt-content" name="content">
+									${editorvo.content}
+								</textarea>
+							</div>
+							
+                            <div class="btn-box">
+                                <a class="btn btn-gray btn-md" href="/board/list">목록</a>
+							    <button class="btn btn-blue btn-md" type="submit" >수정</button>
+                            </div>
+							
+						</form>
 
-				 </main>
+					</div>
+				
+			     
+                </main>
             </div>
             
             <!-- footer(푸터) ------------------------------------------------>

@@ -8,8 +8,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-
 import com.javaex.service.BoardService;
 import com.javaex.vo.BoardVO;
 
@@ -26,7 +24,7 @@ public class BoardController {
 		
 	//method normal
 	
-	//전체 리스트 호출
+	// 게시판 전체 리스트 출력(list)
 	@RequestMapping(value="/list", method = {RequestMethod.GET, RequestMethod.POST})
 	public String list(@ModelAttribute BoardVO boardvo ,Model model) {
 		System.out.println("BoardController.list()");
@@ -39,7 +37,7 @@ public class BoardController {
 		return "board/list";
 	}
 	
-	//리스트 한 개 호출
+	// 게시판 글 보기(read)
 	@RequestMapping(value="/read", method = {RequestMethod.GET, RequestMethod.POST})
 	public String read(@ModelAttribute BoardVO boardvo, Model model) {
 		System.out.println("BoardController.read()");
@@ -58,5 +56,33 @@ public class BoardController {
 		model.addAttribute("readervo", readervo);
 		
 		return "board/read";
+	}
+	
+	// 게시판 수정폼(edit form)
+	@RequestMapping(value="/editform", method = {RequestMethod.GET, RequestMethod.POST})
+	public String editForm(@ModelAttribute BoardVO boardvo, Model model) {
+		System.out.println("BoardController.editForm()");
+		
+		//boardvo에서 no값을 가져오기
+		System.out.println(boardvo);
+		int no = boardvo.getNo();
+		
+		//no를 service로 넘겨서 정보를 editervo 형태로 받기
+		BoardVO editorvo = boardservice.exeBoardSelectOne2(no);
+		System.out.println(editorvo);
+		
+		//editorvo 모델에 담는다
+		model.addAttribute("editorvo", editorvo);
+		
+		return "board/editform";
+	}
+	
+	//게시판 글 수정(edit)
+	public String edit(@ModelAttribute BoardVO editorvo) {
+		System.out.println("BoardController.edit()");
+		
+		System.out.println(editorvo);
+		
+		return"";
 	}
 }
