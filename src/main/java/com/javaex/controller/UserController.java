@@ -3,6 +3,7 @@ package com.javaex.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DuplicateKeyException;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -81,8 +82,19 @@ public class UserController {
 	
 	//edit form(회원정보수정 폼)
 	@RequestMapping(value = "/user/editform", method= {RequestMethod.GET, RequestMethod.POST})
-	public String editForm() {
+	public String editForm(HttpSession session, Model model) {
 		System.out.println("UserController.editForm()");
+		
+		//세션에서 no값을 가져오기 (현재 접속한 사용자의 no값)
+		UserVO authuser = (UserVO)session.getAttribute("authuser");
+		int no = authuser.getNo();
+		
+		//no를 UserService로 넘겨서 정보를 uservo형태로 받는다
+		UserVO uservo = userservice.exeEditForm(no);
+		System.out.println(uservo);
+		
+		//uservo모델에 담는다 ==> D.S야 request의 attribute에 담아라
+		model.addAttribute("uservo", uservo);
 		
 		return "user/editform";
 	} //edit form
@@ -91,8 +103,23 @@ public class UserController {
 	@RequestMapping(value = "/user/edit", method= {RequestMethod.GET, RequestMethod.POST})
 	public String edit(@ModelAttribute UserVO uservo, HttpSession session) {
 		System.out.println("UserController.edit()");
+		System.out.println(uservo);
 		
-		userservice.exeEdit(uservo);
+		//세션에서 no값을 꺼내오기
+		UserVO authuser = (UserVO)session.getAttribute("authuser");
+		int no = authuser.getNo();
+		System.out.println(no);
+		
+		//D.S.에서 uservo에 세션에서 꺼낸 no를 추가한다
+		uservo.setNo(no);
+		System.out.println(uservo);
+		
+		//서비스에 uservo 전달
+		userservice.exeUpdate(uservo);
+		
+		//헤더의 이름 변경 ==> 세션의 이름 변경
+		// 위에서 가져온 authuser로 이름을 변경한다
+		authuser.setName(uservo.getName());
 		
 		return "redirect:/";
 	}

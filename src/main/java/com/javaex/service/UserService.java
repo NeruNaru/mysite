@@ -35,12 +35,21 @@ public class UserService {
 		return authuser;
 	}
 	
+	//-userEditForm
+	public UserVO exeEditForm(int no) {
+		System.out.println("UserService.exeEditForm()");
+		System.out.println(no);
+		
+		UserVO uservo = userrepository.userSelectNo(no);
+		
+		return uservo;
+	}
+	
 	//-user edit
-	public int exeEdit(UserVO uservo) {
-		System.out.println("UserService.exeEdit()");
+	public int exeUpdate(UserVO uservo) {
+		System.out.println("UserService.exeUpdate()");
 		
-		userrepository.userEditAccount(uservo);
-		
+		int count = userrepository.userUpdate(uservo);
 		
 		return 0;
 	}

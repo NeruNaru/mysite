@@ -10,18 +10,36 @@
 			values(null, #{id}, #{password}, #{name}, #{gender})
 		]]>
 	</insert>
+	
+	<!-- user.selectOnIdPw -->
 	<select id="selectOneIdPw" parameterType="com.javaex.vo.UserVO" resultType="com.javaex.vo.UserVO">
 		<![CDATA[
 			select	no,
 					id,
 					password,
-					name
+					name,
+					gender
 			from userdata
 			where id = #{id}
 			and password = #{password}
 		]]>
 	</select>
-	<update id="editAccount" parameterType="com.javaex.vo.UserVO">
+	
+	<!-- user.selectNo -->
+	<select id="selectNo" parameterType="int" resultType="com.javaex.vo.UserVO">
+		<![CDATA[
+			select	no,
+					id,
+					password,
+					name,
+					gender
+			from userdata
+			where no = #{no}		
+		]]>
+	</select>
+	
+	<!-- user.update -->
+	<update id="update" parameterType="com.javaex.vo.UserVO">
 		<![CDATA[
 			update userdata
 			set	password = #{password},

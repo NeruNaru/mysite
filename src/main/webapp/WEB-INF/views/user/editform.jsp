@@ -44,25 +44,28 @@
 
                     <div id="user-editform">
                         
-                        <form class="form-box" action="http://localhost:8888/user/edit" method="get">
+                        <form class="form-box" action="${pageContext.request.contextPath}/user/edit" method="get">
                             <div class="info-row">
                                 <span class="info-title">아이디</span>
-                                <span id="txt-id">${sessionScope.authuser.id}</span>
+                                <span id="txt-id">${requestScope.uservo.id}</span>
                             </div>
                             <div class="info-row">
                                 <label class="info-title" for="txt-pwd">패스워드</label>
-                                <input id="txt-pwd" type="password" name="password" value="${sessionScope.authuser.password}">
+                                <input id="txt-pwd" type="password" name="password" value="${requestScope.uservo.password}">
                             </div>
                             <div class="info-row">
                                 <label class="info-title" for="txt-name">이름</label>
-                                <input id="txt-name" type="text" name="name" value="${sessionScope.authuser.name}">
+                                <input id="txt-name" type="text" name="name" value="${requestScope.uservo.name}">
                             </div>
                             <div class="info-row">
                                 <span class="info-title">성별</span>
                                 <label>남</label>
-                                <input type="radio" name="gender" value="male">
+                                	<input type="radio" name="gender" value="male" 
+                                		<c:if test="${requestScope.uservo.gender eq 'male'}">checked</c:if>>
                                 <label>여</label>
-                                <input type="radio" name="gender" value="female">
+                                	<input type="radio" name="gender" value="female" 
+                                		<c:if test="${requestScope.uservo.gender eq 'female'}">checked</c:if>>
+                                
                             </div>
                             <div class="btn-group">
                                 <button id="btn-edit" class="btn btn-blue btn-lg" type="submit">회원정보수정</button>

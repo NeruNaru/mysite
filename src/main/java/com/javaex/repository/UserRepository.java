@@ -41,15 +41,24 @@ public class UserRepository {
 		return authuser;
 	}
 	
-	//user edit (유저 정보수정)
-	public int userEditAccount(UserVO uservo) {
-		System.out.println("UserRepository.userEdit()");
-		sqlsession.update("user.editAccount", uservo);
+	//userselectno
+	public UserVO userSelectNo(int no) {
+		System.out.println("UserRepository.userSelectNo()");
+		System.out.println(no);
 		
-		UserVO authuserId = sqlsession.selectOne("user.selectOneIdPw", uservo);
-		uservo.setNo(authuserId.getNo());
+		UserVO uservo = sqlsession.selectOne("user.selectNo",no);
+		System.out.println(uservo);
 		
-		System.out.println(uservo.getNo());
+		return uservo;
+	}
+	
+	//userupdate (유저 정보수정)
+	public int userUpdate(UserVO uservo) {
+		System.out.println("UserRepository.userUpdate()");
+		
+		System.out.println(uservo);
+		
+		int count = sqlsession.update("user.update", uservo);
 		
 		return 0;
 	}
