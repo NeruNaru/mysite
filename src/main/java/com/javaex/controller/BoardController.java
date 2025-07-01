@@ -31,8 +31,8 @@ public class BoardController {
 	
 	//-게시판 전체 리스트 (페이징 기능 추가)
 		@RequestMapping(value="/list", method = {RequestMethod.GET, RequestMethod.POST})
-		public String list2(@RequestParam(value="crtpage", required=false, defaultValue="1") int crtPage, Model model) {
-			System.out.println("BoardController.list2()");
+		public String list(@RequestParam(value="crtpage", required=false, defaultValue="1") int crtPage, Model model) {
+			System.out.println("BoardController.list()");
 			
 			Map<String, Object> pMap = boardservice.exeList(crtPage);
 			System.out.println(pMap);

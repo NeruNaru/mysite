@@ -21,9 +21,9 @@
  			<!-- nav ------------------------------------------------>
 			<c:import url="/WEB-INF/views/include/nav.jsp"></c:import>
 			<!-- nav ------------------------------------------------>
-		
-            <div class="content2 clearfix">
-                <!-- left_board_box(박스) ------------------------------------------->
+
+			<div class="content2 clearfix">
+             	<!-- left_board_box(박스) ------------------------------------------->
 				<c:import url="/WEB-INF/views/include/left_board_box.jsp"></c:import>
 				<!-- left_board_box(박스) ------------------------------------------->
 
@@ -38,71 +38,36 @@
                         </ol>
                     </div>
 
-					<div id="guestbook-addlist">
-						<form class="form-box" action="/guestbook/insert" method="post">
+					<div id="guestbook-removeform">
+						<form class="form-box" action="/guestbook/remove" method="get">
 							<table>
 								<colgroup>
-									<col style="width: 70px;">
-									<col style="width: 340px;">
-									<col style="width: 70px;">
-									<col style="width: 340px;">
+									<col style="width: 10%;">
+									<col style="width: 50%;">
+									<col style="width: 25%;">
+									<col style="width: 15%;">
 								</colgroup>
 								<tbody>
 									<tr>
-										<th>
-											<label for="txt-name">이름</label>
-										</th>
+										<th>비밀번호</th>
 										<td>
-											<input id="txt-name" type="text" name="userName" value="">
+											<input type="password" name="password" value="">
 										</td>
-										<th>
-											<label for="txt-password">패스워드</label>
-										</th>
-										<td>
-											<input id="txt-password"type="password" name="password" value="">
+										<td class="text-left">
+											<button class="btn btn-blue btn-input" type="submit">삭제</button>
 										</td>
-									</tr>
-									<tr>
-										<td colspan="4">
-											<textarea id="text-content" name="content"></textarea>
-										</td>
-									</tr>
-									<tr>
-										<td colspan="4" class="btn-box">
-											<button class="btn btn-blue btn-lg" type="submit">등록</button>
-										</td>
-									</tr>
-								</tbody>
-								
-							</table>
-						</form>	
-						
-						<c:forEach items="${requestScope.gList}" var="guestbookvo">
-							<table class="guestbook-item">
-								<colgroup>
-									<col style="width: 10%;">
-									<col style="width: 40%;">
-									<col style="width: 40%;">
-									<col style="width: 10%;">
-								</colgroup>
-								<tbody>
-									<tr>
-										<td>${guestbookvo.no}</td>
-										<td>${guestbookvo.userName}</td>
-										<td>${guestbookvo.regDate}</td>
 										<td class="txt-center">
-											<a class="btn btn-gray btn-sm" href="/guestbook/removeform?no=${guestbookvo.no}">삭제</a>
+											<a id="btn-main" class="btn btn-gray btn-input" href="/guestbook/addlist">메인으로 돌아가기</a>
 										</td>
-									</tr>
-									<tr>
-										<td colspan=4>${guestbookvo.content}</td>
 									</tr>
 								</tbody>
 							</table>
-						</c:forEach>
+								<input type="hidden" name="no" value="${param.no}">
+						</form>
+						
 					</div>
-			    
-                </main>
+
+				   </main>
             </div>
             
             <!-- footer(푸터) ------------------------------------------------>
