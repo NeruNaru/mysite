@@ -24,7 +24,7 @@ create table userdata(
 
 -- 등록
 insert into userdata
-values(null, 'aaa', '123', '정우성', 'male')
+values(3, 'jjj', '123', '김태희', 'female')
 ;
 
 -- 조회

@@ -43,6 +43,8 @@ select	b.no,
         u.name userName
 from board b, userdata u
 where u.no = b.user_no
+order by b.no asc
+limit 0, 10
 ;
 
 -- 특정 게시물 조회
@@ -57,3 +59,10 @@ from board b, userdata u
 where u.no = b.user_no
 and b.no = 2
 ;
+
+-- 게시글 수정
+update board
+set title = '수정된 제목',
+	content = '수정된 본문',
+    reg_date = now()
+where no = 1;

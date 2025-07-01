@@ -50,7 +50,7 @@
                                 이제 로그인하여 다양한 서비스를 이용해보세요.
                                 <br><br>
                                 <a class="btn btn-gray btn-sm" href="/user/loginform">로그인</a>
-                                <a class="btn btn-gray btn-sm" href="/main/index">홈으로</a>
+                                <a class="btn btn-gray btn-sm" href="redirect:/">홈으로</a>
                             </p>
                         </div>
                         

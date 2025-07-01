@@ -1,6 +1,6 @@
 package com.javaex.controller;
 
-import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -8,8 +8,13 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+
 import com.javaex.service.BoardService;
 import com.javaex.vo.BoardVO;
+import com.javaex.vo.UserVO;
+
+import jakarta.servlet.http.HttpSession;
 
 
 @Controller
@@ -24,18 +29,18 @@ public class BoardController {
 		
 	//method normal
 	
-	// 게시판 전체 리스트 출력(list)
-	@RequestMapping(value="/list", method = {RequestMethod.GET, RequestMethod.POST})
-	public String list(@ModelAttribute BoardVO boardvo ,Model model) {
-		System.out.println("BoardController.list()");
-		
-		List<BoardVO> boardList = boardservice.exeGetBoardList();
-		
-		model.addAttribute("bList", boardList);
-		System.out.println(boardList);
-		
-		return "board/list";
-	}
+	//-게시판 전체 리스트 (페이징 기능 추가)
+		@RequestMapping(value="/list", method = {RequestMethod.GET, RequestMethod.POST})
+		public String list2(@RequestParam(value="crtpage", required=false, defaultValue="1") int crtPage, Model model) {
+			System.out.println("BoardController.list2()");
+			
+			Map<String, Object> pMap = boardservice.exeList(crtPage);
+			System.out.println(pMap);
+			
+			model.addAttribute("pMap", pMap);
+
+			return "board/list";
+		}
 	
 	// 게시판 글 보기(read)
 	@RequestMapping(value="/read", method = {RequestMethod.GET, RequestMethod.POST})
@@ -78,11 +83,40 @@ public class BoardController {
 	}
 	
 	//게시판 글 수정(edit)
+	@RequestMapping(value="/edit", method = {RequestMethod.GET, RequestMethod.POST})
 	public String edit(@ModelAttribute BoardVO editorvo) {
 		System.out.println("BoardController.edit()");
 		
 		System.out.println(editorvo);
 		
-		return"";
+		boardservice.exeBoardUpdate(editorvo);
+		
+		return"redirect:/board/list";
+	}
+	
+	//게시판 글 쓰기(writeform)
+	@RequestMapping(value="/writeform", method = {RequestMethod.GET, RequestMethod.POST})
+	public String writeForm() {
+		System.out.println("BoardController.writeForm()");
+		
+		
+		
+		return "board/writeform";
+	}
+	
+	//게시판 글 쓰기(write)
+	@RequestMapping(value="/write", method = {RequestMethod.GET, RequestMethod.POST})
+	public String write(@ModelAttribute BoardVO boardvo, HttpSession session) {
+		System.out.println("BoardController.write()");
+		
+		int userNo = ((UserVO)session.getAttribute("authuser")).getNo();
+		System.out.println(userNo);
+		
+		boardvo.setNo(userNo);
+		System.out.println(boardvo);
+		
+		boardservice.exeBoardWrite(boardvo);
+		
+		return "board/list";
 	}
 }

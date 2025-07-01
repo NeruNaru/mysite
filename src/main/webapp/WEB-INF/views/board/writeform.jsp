@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-
 <!DOCTYPE html>
 <html lang="ko">
     <head>
@@ -14,11 +13,11 @@
 
     <body>
       <div class="wrap">
-           <!-- header(헤더) ------------------------------------------------>
+			<!-- header(헤더) ------------------------------------------------>
 			<c:import url="/WEB-INF/views/include/header.jsp"></c:import>
 			<!-- header(헤더) ------------------------------------------------>
 
-            <!-- nav ------------------------------------------------>
+			<!-- nav ------------------------------------------------>
 			<c:import url="/WEB-INF/views/include/nav.jsp"></c:import>
 			<!-- nav ------------------------------------------------>
 
@@ -31,10 +30,8 @@
                     </ul>
                 </aside>
 
-
-				<main>
-
-				    <div class="main-head clearfix">
+                <main>
+                    <div class="main-head clearfix">
                         <h3>일반게시판</h3>
                         <ol class="clearfix">
                             <li>홈</li>
@@ -42,51 +39,31 @@
                             <li>일반게시판</li>
                         </ol>
                     </div>
-	
-					<div id="board-editform">
-						
-						<form class="form-box" action="${pageContext.request.contextPath}/board/edit" method="get">
-							<input type="hidden" name="no" value="${editorvo.no}">
-							
-							<!-- 작성자 -->
-							<div class="info-row">
-								<span class="info-title">작성자</span>
-								<span>${editorvo.userName}</span>
-							</div>
-							
-							<!-- 조회수 -->
-							<div class="info-row">
-								<span class="info-title">조회수</span>
-								<span>${editorvo.hit}</span>
-							</div>
-							
-							<!-- 작성일 -->
-							<div class="info-row">
-								<span class="info-title">작성일</span>
-								<span>${editorvo.regDate}</span>
-							</div>
-							
+                    
+                    <div id="board-writeform">
+                
+                        <form class="form-box" action="${pageContext.request.contextPath}/board/write" method="post">
 							<!-- 제목 -->
 							<div class="info-row">
 								<label class="info-title" for="txt-title">제&nbsp;&nbsp;&nbsp;목</label>
-								<input type="text" id="txt-title" name="title" value="${editorvo.title}">
+								<input type="text" id="txt-title" name="title" value="" placeholder="제목을 입력해 주세요">
 							</div>
 						
 							<!-- 내용 -->
 							<div class="info-row">
-								<textarea id="txt-content" name="content">${editorvo.content}</textarea>
+								<textarea id="txt-content" name="content"></textarea>
 							</div>
 							
                             <div class="btn-box">
-                                <a class="btn btn-gray btn-md" href="/board/list">목록</a>
-							    <button class="btn btn-blue btn-md" type="submit" >수정</button>
-                            </div>
-							
+							    <a class="btn btn-gray btn-md" href="">목록</a>
+							    <button class="btn btn-blue btn-md" type="submit" >등록</button>
+							</div>
 						</form>
+						<!-- //form -->
 
-					</div>
-				
-			     
+                    </div>
+
+                    
                 </main>
             </div>
             

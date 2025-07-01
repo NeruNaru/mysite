@@ -65,7 +65,7 @@
 									<th>관리</th>
 								</tr>
 							</thead>
-							<c:forEach items="${requestScope.bList}" var="boardvo">
+							<c:forEach items="${requestScope.pMap.boardList}" var="boardvo">
 							<tbody>
 								<tr>
 									<td>${boardvo.no}</td>
@@ -87,22 +87,39 @@
 
                         <div class="paging">
 							<ul class="clearfix">
-								<li><a href="">◀</a></li>
-								<li><a href="">1</a></li>
-								<li><a href="">2</a></li>
-								<li><a href="">3</a></li>
-								<li><a href="">4</a></li>
-								<li class="active"><a href="">5</a></li>
-								<li><a href="">6</a></li>
-								<li><a href="">7</a></li>
-								<li><a href="">8</a></li>
-								<li><a href="">9</a></li>
-								<li><a href="">10</a></li>
-								<li><a href="">▶</a></li>
+								<c:choose>
+									<c:when test="${requestScope.pMap.prev == true}">
+										<li><a href="http://localhost:8888/board/list?crtpage=${requestScope.pMap.startPageBtnNo-1}">◀</a></li>
+									</c:when>
+									<c:otherwise>
+									<li style="visibility: hidden;"><span>◀</span></li>
+									</c:otherwise>
+								</c:choose>
+								<c:forEach begin="${requestScope.pMap.startPageBtnNo}" 
+									end="${requestScope.pMap.endPageBtnNo}"
+										step="1"
+											var="page">
+										<c:choose>
+											<c:when test="${param.crtpage == page}">												
+												<li class="active"><a href="http://localhost:8888/board/list2?crtpage=${page}">${page}</a></li>
+											</c:when>
+											<c:otherwise>
+													<li><a href="http://localhost:8888/board/list?crtpage=${page}">${page}</a></li>											
+											</c:otherwise>
+										</c:choose>
+								</c:forEach>
+								<c:choose>
+									<c:when test="${requestScope.pMap.next == true}">
+										<li><a href="http://localhost:8888/board/list?crtpage=${requestScope.pMap.endPageBtnNo+1}">▶</a></li>
+									</c:when>
+									<c:otherwise>&nbsp;</c:otherwise>
+								</c:choose>
 							</ul>
 						</div>
                         <div class="btn-box">
-                            <a class="btn btn-blue btn-md" href="">글쓰기</a>
+                        	<c:if test="${sessionScope.authuser.no != null}">
+                            	<a class="btn btn-blue btn-md" href="/board/writeform">글쓰기</a>
+                            </c:if>
                         </div>
                     </div>
 
