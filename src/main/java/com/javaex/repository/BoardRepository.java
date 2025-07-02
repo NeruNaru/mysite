@@ -87,4 +87,25 @@ public class BoardRepository {
 		
 		return 0;
 	}
+	
+	//# 게시판 전체 리스트 가져오기(페이징 기능 추가, 검색기능 추가) repository
+	public List<BoardVO> boardSelectList3(Map<String, Object> limitMap) {
+		System.out.println("BoardRepository.boardSelectList3()");
+		System.out.println(limitMap);
+				
+		List<BoardVO> boardList = sqlsession.selectList("board.selectList3", limitMap);
+				
+		return boardList;
+	}
+	
+	//# 전체 글 갯수 + 키워드 count repository
+	public int selectTotalCountByKwd(String kwd) {
+		System.out.println("BoardRepository.selectTotalCountByKwd()");
+		
+		int totalCount = sqlsession.selectOne("board.selectTotalCountByKwd", kwd);
+		
+		System.out.println("totalCount = " + totalCount);
+		
+		return totalCount;
+	}
 }

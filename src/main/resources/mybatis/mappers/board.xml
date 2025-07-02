@@ -73,4 +73,35 @@
 		]]>
 	</insert>
 	
+	<!-- selectList 페이징 검색기능-->
+	<select id="selectList3" resultType="com.javaex.vo.BoardVO">
+		<![CDATA[
+			select	b.no,
+        			b.title,
+        			b.content,
+        			b.hit,
+        			date_format(b.reg_date, '%Y-%m-%d') regDate,
+					u.no userNo,
+        			u.name userName
+			from board b, userdata u
+			where u.no = b.user_no
+		]]>			
+		<if test="kwd != null">	
+			and title like concat('%', #{kwd}, '%')
+		</if>
+		<![CDATA[
+			order by b.no desc
+			limit #{startRowNo}, #{listCnt}
+		]]>
+	</select>
+	
+	<!-- 전체 글 갯수 구하기 + 검색기능 (count) -->
+	<select id="selectTotalCountByKwd" resultType="int">
+		<![CDATA[
+			select	count(*)	count
+			from board
+			where title like concat('%', #{kwd}, '%')
+		]]>
+	</select>
+	
 </mapper>

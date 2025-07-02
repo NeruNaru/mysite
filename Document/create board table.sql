@@ -66,3 +66,9 @@ set title = '수정된 제목',
 	content = '수정된 본문',
     reg_date = now()
 where no = 1;
+
+-- 게시글 검색
+select	count(*)
+from board
+where title like '%12%'
+;

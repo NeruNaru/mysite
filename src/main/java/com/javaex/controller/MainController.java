@@ -24,5 +24,11 @@ public class MainController {
 		return "main/index";
 	}
 	
+	@RequestMapping(value="/{id}", method= {RequestMethod.GET, RequestMethod.POST})
+	public String aaa() {
+		System.out.println("MaintController.index()");
+		
+		return "main/index";
+	}
 
 }

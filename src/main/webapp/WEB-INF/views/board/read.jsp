@@ -22,13 +22,9 @@
 			<!-- nav ------------------------------------------------>
 
             <div class="content2 clearfix">
-                <aside>
-                    <h2>게시판</h2>
-                    <ul>
-                        <li><a href="/board/list">일반게시판</a></li>
-                        <li><a href="">댓글게시판</a></li>
-                    </ul>
-                </aside>
+                <!-- left_board_box(박스) ------------------------------------------->
+				<c:import url="/WEB-INF/views/include/left_board_box.jsp"></c:import>
+				<!-- left_board_box(박스) ------------------------------------------->
 
 
 				<main>

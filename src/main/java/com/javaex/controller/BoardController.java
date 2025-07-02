@@ -119,4 +119,25 @@ public class BoardController {
 		
 		return "board/list";
 	}
+	
+	//-게시판 전체 리스트3 (페이징 기능 추가, 검색기능 추가)
+	@RequestMapping(value="/list3", method = {RequestMethod.GET, RequestMethod.POST})
+	public String list3(@RequestParam(value="crtpage", required=false, defaultValue="1") int crtPage, 
+						@RequestParam(value="kwd", required=false, defaultValue="") String kwd,
+						Model model) {
+		System.out.println("BoardController.list3()");
+				
+		System.out.println(crtPage);
+		System.out.println(kwd);
+				
+				
+		Map<String, Object> pMap = boardservice.exeList3(crtPage, kwd);
+		System.out.println("pMap" + pMap);
+				
+				
+		model.addAttribute("pMap", pMap);
+				
+				
+		return "board/list3";
+	}
 }
