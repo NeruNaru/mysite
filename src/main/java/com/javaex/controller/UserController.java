@@ -7,6 +7,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.javaex.service.UserService;
 import com.javaex.vo.UserVO;
@@ -134,6 +136,25 @@ public class UserController {
 		session.invalidate();
 		
 		return "main/index";
+	}
+	
+	//아이디 중복체크
+	@ResponseBody
+	@RequestMapping(value="/user/idcheck", method = {RequestMethod.GET, RequestMethod.POST})
+	public String idCheck(@RequestParam(value="id") String id, Model model) {
+		System.out.println("UserController.idCheck()");
+		
+		System.out.println(id);
+		
+		boolean isUse = userservice.exeIdCheck(id);
+		System.out.println(isUse);
+		
+		//model.addAttribute("isUse", isUse);		//jsp에 전달하는 코드
+		
+		String result = "{\"isUse\":"+isUse+"}";
+		System.out.println(result);
+		
+		return result;
 	}
 	
 }

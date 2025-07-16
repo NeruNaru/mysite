@@ -62,4 +62,14 @@ public class UserRepository {
 		
 		return 0;
 	}
+	
+	//아이디 사용 유무 체크
+	public UserVO userSelectById(String id) {
+		System.out.println("UserRepository.userSelectById()");
+		System.out.println(id);
+		
+		UserVO uservo = sqlsession.selectOne("user.selectOneById", id);
+		
+		return uservo;
+	}
 }

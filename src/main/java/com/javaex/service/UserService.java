@@ -53,4 +53,18 @@ public class UserService {
 		
 		return 0;
 	}
+	
+	//--아이디 사용 유무체크
+	public boolean exeIdCheck(String id) {
+		System.out.println("UserService.exeIdCheck()");
+		System.out.println(id);
+		
+		UserVO uservo = userrepository.userSelectById(id);
+		
+		if(uservo == null) {
+			return true;
+		} else {
+			return false;
+		}
+	}
 }

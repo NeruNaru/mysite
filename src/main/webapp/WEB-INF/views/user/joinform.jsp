@@ -6,9 +6,12 @@
     <head>
         <meta charset="UTF-8">
         <title>MySite</title>
+        <!-- css -->
         <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/reset.css">
         <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/mysite.css">
         <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/user.css">
+    	<!-- js -->
+    	<script src="${pageContext.request.contextPath}/assets/js/jquery-3.7.1.js"></script>
     </head>
 
     <body>
@@ -43,7 +46,9 @@
                             <div class="info-row">
                                 <label class="info-title" for="txt-idcheck">아이디</label>
                                 <input id="txt-idcheck" type="text" name="id" value="">
-                                <button id="" class="btn btn-gray btn-input"  type="button">중복체크</button>
+                                <button id="btnCheck" class="btn btn-gray btn-input"  type="button">중복체크</button>
+                            	<p id="checkMsg"></p>
+                            	
                             </div>
                             <div class="info-row">
                                 <label class="info-title" for="txt-pwd">패스워드</label>
@@ -81,6 +86,63 @@
 			<!-- footer(푸터) ------------------------------------------------>
 
         </div>
-     
+<!-- javascript 버전
+     <script>
+     	document.addEventListener('DOMContentLoaded', function(){
+			console.log('돔트리완료');
+			
+			let btnCheck = document.querySelector('#btnCheck');
+			console.log(btnCheck);
+			
+			btnCheck.addEventListener('click', function(){
+				console.log('버튼클릭 감지');
+				
+			});
+     	});
+     </script>
+-->
+
+	<script>
+		$(document).ready(function(){
+			console.log('돔트리완료');
+			$('#btnCheck').on('click',function(){
+				console.log('클릭감지');
+				
+				let id = $('#txt-idcheck').val();
+				console.log(id);
+				
+				$.ajax({
+					
+					url : '${pageContext.request.contextPath}/user/idcheck',		
+					type : 'post',
+					//contentType : 'application/json',
+					data : {id: id},
+
+					dataType : 'json',
+					success : function(result){
+					    /*성공시 처리해야될 코드 작성*/
+					    console.log(result);
+					    console.log(result.isUse);
+					    
+						if(result.isUse == true){
+							$('#checkMsg').html('사용할 수 있는 아이디 입니다.')
+							$('#checkMsg').css('color', '#0000ff');	
+							$('#checkMsg').css('font-weight', 'bold');
+						}else {
+							$('#checkMsg').html('<strong>이미 사용중인 아이디 입니다.</strong>');
+							$('#checkMsg').css('color', '#ff0000');	
+							$('#checkMsg').css('font-weight', 'bold');
+						}
+					    
+					},
+					error : function(XHR, status, error) {
+						console.error(status + ' : ' + error);
+					}
+				});
+
+			});
+				
+		});
+	</script>
     </body>
 </html>

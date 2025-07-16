@@ -22,7 +22,7 @@ drop table guestbook;
 
 -- 방명록 등록
 insert into guestbook
-values(null, '이정재', '123', now(), '방명록 글입니다. 방명록 글입니다.')
+values(null, '이정재', '123', now(), '방명록 글입니다. 방명록 글입니	다.')
 ;
 
 -- 전체 조회
