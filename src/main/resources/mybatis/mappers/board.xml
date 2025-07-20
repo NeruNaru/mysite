@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="board">
+<!-- 쿼리문작성 -->
+	
+	<!-- selectList -->
+	<select id="selectList" resultType="com.javaex.vo.BoardVO">
+		<![CDATA[
+			select	b.no,
+        			b.title,
+        			b.content,
+        			b.hit,
+        			date_format(b.reg_date, '%Y-%m-%d') regDate,
+					u.no userNo,
+        			u.name userName
+			from board b, userdata u
+			where u.no = b.user_no
+			order by b.no desc
+			limit #{startRowNo}, #{listCnt}
+		]]>
+	</select>
+	
+	
+	<!-- selectOne -->
+	<select id="selectOne" resultType="com.javaex.vo.BoardVO">
+		<![CDATA[
+			select	b.no,
+			        b.title,
+			        b.content,
+			        b.hit,
+			        b.reg_date regDate,
+			        u.no userNo,
+			        u.name userName
+			from board b, userdata u
+			where u.no = b.user_no
+			and b.no = #{no}
+		]]>
+	</select>
+	
+	<!-- updateHit - 조회수 증가 -->
+	<update id="updateHit">
+		<![CDATA[
+			update board
+			set hit = hit + 1
+			where no = #{no}
+		]]>
+	</update>
+	
+	<!-- 전체 글 갯수 구하기 (count) -->
+	<select id="selectTotalCount" resultType="int">
+		<![CDATA[
+			select	count(*)	count
+			from board
+		]]>
+	</select>
+	
+	<!-- 게시글 수정 -->
+	<update id="updateBoard">
+		<![CDATA[
+			update board
+			set title = #{title},
+				content = #{content},
+				reg_date = now()
+			where no = #{no}
+		]]>
+	</update>
+	
+	<!-- 게시글 작성 -->
+	<!--  
+	<insert id="insertBoard">
+		<![CDATA[
+			insert into board
+			values(null, #{no}, #{title}, #{content}, 0, now())
+		]]>
+	</insert>
+	-->
+	
+	<!-- selectList 페이징 검색기능-->
+	<select id="selectList3" resultType="com.javaex.vo.BoardVO">
+		<![CDATA[
+			select	b.no,
+        			b.title,
+        			b.content,
+        			b.hit,
+        			date_format(b.reg_date, '%Y-%m-%d') regDate,
+					u.no userNo,
+        			u.name userName
+			from board b, userdata u
+			where u.no = b.user_no
+		]]>			
+		<if test="kwd != null">	
+			and title like concat('%', #{kwd}, '%')
+		</if>
+		<![CDATA[
+			order by b.no desc
+			limit #{startRowNo}, #{listCnt}
+		]]>
+	</select>
+	
+	<!-- 전체 글 갯수 구하기 + 검색기능 (count) -->
+	<select id="selectTotalCountByKwd" resultType="int">
+		<![CDATA[
+			select	count(*)	count
+			from board
+			where title like concat('%', #{kwd}, '%')
+		]]>
+	</select>
+	
+</mapper>

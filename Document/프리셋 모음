@@ -1,0 +1,40 @@
+[프리셋 모음]
+
+[header 프리셋]
+			<!-- header(헤더) ------------------------------------------------>
+			<c:import url="/WEB-INF/views/include/header.jsp"></c:import>
+			<!-- header(헤더) ------------------------------------------------>
+
+[nav 프리셋]
+			<!-- nav ------------------------------------------------>
+			<c:import url="/WEB-INF/views/include/nav.jsp"></c:import>
+			<!-- nav ------------------------------------------------>
+			
+[footer 프리셋]
+			<!-- footer(푸터) ------------------------------------------------>
+			<c:import url="/WEB-INF/views/include/footer.jsp"></c:import>
+			<!-- footer(푸터) ------------------------------------------------>
+			
+[left_board_box 프리셋]
+			<!-- left_board_box(박스) ------------------------------------------->
+			<c:import url="/WEB-INF/views/include/left_board_box.jsp"></c:import>
+			<!-- left_board_box(박스) ------------------------------------------->
+
+[left_user_box 프리셋]
+			<!-- left_user_box(박스) ------------------------------------------->
+			<c:import url="/WEB-INF/views/include/left_user_box.jsp"></c:import>
+			<!-- left_user_box(박스) ------------------------------------------->
+[asideGuestbook 프리셋]
+			<!-- left_user_box(박스) -------------------------------------------->
+			<c:import url="/WEB-INF/views/include/asideGuestbook.jsp"></c:import>
+			<!-- left_user_box(박스) -------------------------------------------->
+[asideGallery 프리셋]
+			<!-- left_user_box(박스) -------------------------------------------->
+			<c:import url="/WEB-INF/views/include/asideGallery.jsp"></c:import>
+			<!-- left_user_box(박스) -------------------------------------------->
+			
+
+
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
+${pageContext.request.contextPath}

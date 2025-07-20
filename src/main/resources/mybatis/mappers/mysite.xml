@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="user">
+<!-- 쿼리문작성 -->
+	
+	<!-- user insert(join){유저 저장(회원가입)} -->
+	<insert id="insert" parameterType="com.javaex.vo.UserVO">
+		<![CDATA[
+			insert into userdata
+			values(null, #{id}, #{password}, #{name}, #{gender})
+		]]>
+	</insert>
+	
+	<!-- user.selectOnIdPw -->
+	<select id="selectOneIdPw" parameterType="com.javaex.vo.UserVO" resultType="com.javaex.vo.UserVO">
+		<![CDATA[
+			select	no,
+					id,
+					password,
+					name,
+					gender
+			from userdata
+			where id = #{id}
+			and password = #{password}
+		]]>
+	</select>
+	
+	<!-- user.selectNo -->
+	<select id="selectNo" parameterType="int" resultType="com.javaex.vo.UserVO">
+		<![CDATA[
+			select	no,
+					id,
+					password,
+					name,
+					gender
+			from userdata
+			where no = #{no}		
+		]]>
+	</select>
+	
+	<!-- user.update -->
+	<update id="update" parameterType="com.javaex.vo.UserVO">
+		<![CDATA[
+			update userdata
+			set	password = #{password},
+				name = #{name},
+				gender = #{gender}
+			where no = #{no}
+		]]>
+	</update>
+	
+	<!-- user.selectOneById -->
+	<select id="selectOneById" parameterType="string" resultType="com.javaex.vo.UserVO">
+		<![CDATA[
+			select	no,
+					id,
+					name,
+					gender
+			from userdata
+			where id = #{id}
+		]]>
+	</select>
+</mapper>
