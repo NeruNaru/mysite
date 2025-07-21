@@ -10,12 +10,13 @@ import java.util.UUID;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.javaex.repository.AttachRepository;
 import com.javaex.vo.FileVO;
 
 @Service
 public class AttachService {
 	//field
-	
+	private AttachRepository attachrepository;
 	//editor
 	
 	//method g/s
@@ -60,6 +61,8 @@ public class AttachService {
 		} catch(IOException e) {
 			e.printStackTrace();
 		}
+		
+		
 		
 		return saveName;
 	}
