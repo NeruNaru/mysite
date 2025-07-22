@@ -7,8 +7,21 @@
 <!--
 <select id="selectList">
 	<![CDATA[
-
+		select	no,
+		        org_name	orgName,
+		        ex_name		exName,
+		        save_name	saveName,
+		        file_path	filePath,
+		        file_size	fileSize
+		from fileattach
 	]]>
 </select>
+
+<insert id="fileUpload">
+	<![CDATA[
+		insert into fileattach
+		values(null, #{orgName}, #{exName}, #{saveName}, #{filePath}, #{fileSize})
+	]]>
+</insert>
 -->
 </mapper>

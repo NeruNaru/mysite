@@ -37,7 +37,7 @@ public class AttachController {
 		System.out.println(file);
 		attachservice.exeUpload(file);
 		
-		return "";
+		return "attach/uploadresult";
 	}
 	
 	//업로드 결과
