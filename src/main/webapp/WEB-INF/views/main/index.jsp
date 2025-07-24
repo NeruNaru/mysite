@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html lang="ko">
     <head>
@@ -56,4 +57,7 @@
 			<!-- footer(푸터) ------------------------------------------------>
         </div>
     </body>
+    <script>
+    	console.log("version 0.9.1");
+    </script>
 </html>

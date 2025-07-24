@@ -36,6 +36,14 @@
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
 		
+		<!-- Tomcat을 provided로 설정 -->
+		<dependency>
+		    <groupId>org.springframework.boot</groupId>
+		    <artifactId>spring-boot-starter-tomcat</artifactId>
+		    <scope>provided</scope>
+		</dependency>
+
+		
 		<!-- mysql -->
 		<dependency>
 			<groupId>com.mysql</groupId>
@@ -104,12 +112,14 @@
 	</dependencies>
 
 	<build>
-		<plugins>
-			<plugin>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-maven-plugin</artifactId>
-			</plugin>
-		</plugins>
+	    <finalName>ROOT</finalName>
+	    <plugins>
+	       <plugin>
+	           <groupId>org.springframework.boot</groupId>
+	           <artifactId>spring-boot-maven-plugin</artifactId>
+	       </plugin>
+	    </plugins>
 	</build>
+
 
 </project>

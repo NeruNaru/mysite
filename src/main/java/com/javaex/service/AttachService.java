@@ -64,7 +64,7 @@ public class AttachService {
 			e.printStackTrace();
 		}
 		
-		
+		attachrepository.fileUpload(file);
 		
 		return saveName;
 	}
