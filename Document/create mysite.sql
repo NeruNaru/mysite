@@ -27,6 +27,13 @@ insert into userdata
 values(3, 'jjj', '123', '김태희', 'female')
 ;
 
+insert into userdata
+values(1, 'aaa', '123', '정우성', 'female')
+;
+insert into userdata
+values(2, 'bbb', '123', '유재석', 'female')
+;
+
 -- 조회
 select	no,
 		id,
